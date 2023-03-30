@@ -8,11 +8,15 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Student Information</h3>
-                <form action="{{ route('attendance.mark', ['id' => $student->id]) }}" method="POST">
-                    @csrf
-                    <input type="text" value="{{ session()->get('attendance') }}" name="attendance" id="" hidden>
-                    <button type="submit" class="btn btn-success float-left">Mark Attendance</button>
-                </form>
+
+                @can('isInvigilator', \App\Models\User::class)
+                    <form action="{{ route('attendance.mark', ['id' => $student->id]) }}" method="POST">
+                        @csrf
+                        <input type="text" value="{{ session()->get('attendance') }}" name="attendance" id="" hidden>
+                        <button type="submit" class="btn btn-success float-left">Mark Attendance</button>
+                    </form>
+                @endcan
+                
             </div>
             <div class="block-content block-content-full">
                 <!-- Regular -->

@@ -7,12 +7,14 @@
                 <div class="block block-rounded mb-0">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">SELECT COURSES</h3>
+                        <a href="{{ route('dashboard') }}" class="btn btn-primary">Cancel</a>
+
 
                     </div>
                     <div class="block-content">
                         <div class="p-sm-3 px-lg-4 px-xxl-5 py-lg-5">
                             <p class="fw-medium text-muted">
-                                Select courses as applied to you.
+                                Select courses as applied to this student.
                             </p>
 
                             <!-- Sign Up Form -->

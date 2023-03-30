@@ -8,10 +8,10 @@
     @component('layouts.backend.partials.main.nav-bar')
     @endcomponent
 
-    @component('layouts.backend.partials.main.hero', ['titleMain' => "Attendance and Verification System", 'titleSub' => 'Manage all your exam students attendance at ease'])
+    @component('layouts.backend.partials.main.hero', ['titleMain' => "Attendandance Management", 'titleSub' => 'Student Attendance Report for ' . $course->title])
     @endcomponent
 
-    @component('components.home', ['info' => $info])
+    @component('components.backend.attendance.report', ['students' => $students])
     @endcomponent
 
     @component('layouts.backend.partials.footer')

@@ -5,7 +5,7 @@
         <!-- Left Section -->
         <div class="d-flex align-items-center">
             <!-- Logo -->
-            <a class="fw-semibold fs-5 tracking-wider text-dual me-3" href="#"> Smart<span class="fw-normal">Attend</span> </a>
+            <a class="fw-semibold fs-5 tracking-wider text-dual me-3" href="#">Examination Verification and Attendance System by Dominic A</span> </a>
             <!-- END Logo -->
         </div>
         <!-- END Left Section -->
@@ -18,12 +18,12 @@
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ms-2">
                 <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-none d-sm-inline-block ms-2">{{ Illuminate\Support\Facades\Auth::user()->name }}</span>
+                    <span class="d-none d-sm-inline-block ms-2">{{ Illuminate\Support\Facades\Auth::user()->role . " MODULE"}}</span>
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0" aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-body-light border-bottom rounded-top">
-                        <p class="mt-2 mb-0 fw-medium">{{ Illuminate\Support\Facades\Auth::user()->name }}</p>
+                        <p class="mt-2 mb-0 fw-medium">{{ Illuminate\Support\Facades\Auth::user()->name  }}</p>
                     </div>
                     <div class="p-2">
                     </div>

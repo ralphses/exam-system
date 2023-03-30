@@ -2,6 +2,7 @@
     <div class="p-5 block block-rounded">
         <div class="block-header block-header-default">
             <h3 class="block-title">ALL ATTENDANCES</h3>
+            <button class="btn btn-primary float-left" id="printBtn">Print Report</button>
             <div class="block-options">
 
             </div>
@@ -13,31 +14,28 @@
                     <thead>
                     <tr>
                         <th style="width: 10%;">#</th>
-                        <th style="width: 15%;"">Title</th>
-                        <th style="width: 30%;">Examination</th>
-                        <th style="width: 25%;">Period</th>
-                        <th>Actions</th>
+                        <th style="width: 35%;"">Student Name</th>
+                        <th style="width: 30%;">Matric No.</th>
+                        <th style="width: 25%;">Attended</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    @if($attendances->count() > 0)
+                    @if($students->count() > 0)
                     
-                        @foreach($attendances as $attendance)
+                        @foreach($students as $student)
                             <tr>
                                 <td class="fw-semibold fs-sm">
                                     <a href="">{{ ++$loop->index }}</a>
                                 </td>
                                 <td class="fw-semibold fs-sm">
-                                    {{ $attendance->examination->course->code . " ATTENDANCE" }}
+                                    {{ $student->name }}
                                 </td>
-                                <td class="fs-sm">{{ $attendance->examination->title }}</em></td>
+                                <td class="fs-sm">{{ $student->matric }}</em></td>
                                 <td>
-                                    {{ $attendance->examination->start_time . " - " . $attendance->examination->stop_time }}
+                                    True
                                 </td>
-                                <td>
-                                   <a href="{{ route('attendance.report', ['id' => $attendance->id]) }}">View Report</a>
-                                </td>
+                                
                             </tr>
                         @endforeach
 
@@ -57,3 +55,7 @@
         </div>
     </div>
 </div>
+<script>
+
+document.getElementById('printBtn').addEventListener('click', () => window.print());
+</script>

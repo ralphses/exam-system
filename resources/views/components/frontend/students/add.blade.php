@@ -6,14 +6,14 @@
                 <!-- Sign Up Block -->
                 <div class="block block-rounded mb-0">
                     <div class="block-header block-header-default">
-                        <h3 class="block-title">Student Register</h3>
+                        <h3 class="block-title">Add New Student</h3>
+                        <a href="{{ route('dashboard') }}" class="btn btn-primary">Cancel</a>
 
                     </div>
                     <div class="block-content">
                         <div class="p-sm-3 px-lg-4 px-xxl-5 py-lg-5">
-                            <h1 class="h2 mb-1">SmartAttend</h1>
                             <p class="fw-medium text-muted">
-                                Please fill the following details to create a new account.
+                                Please fill the following details to create a new student record.
                             </p>
 
                             <!-- Sign Up Form -->

@@ -20,58 +20,38 @@
                             <span class="nav-main-link-name">Dashboard</span>
                         </a>
                     </li>
+                  @can('isAdmin', App\Models\User::class)
+
                     <li class="nav-main-item">
-                        <a class="nav-main-link active nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
-                            <i class="nav-main-link-icon si si-puzzle"></i>
-                            <span class="nav-main-link-name">Services</span>
+                        <a class="nav-main-link" href="{{ route('staff.all') }}">
+                            <span class="nav-main-link-name">Invigilators</span>
                         </a>
-                        <ul class="nav-main-submenu">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="{{ route('staff.all') }}">
-                                    <span class="nav-main-link-name">Staffs</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="{{ route('students.all') }}">
-                                    <span class="nav-main-link-name">Students</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="{{ route('course.all') }}">
-                                    <span class="nav-main-link-name">Courses</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="{{ route('exam.all') }}">
-                                    <span class="nav-main-link-name">Exams</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="{{ route('attendance.all') }}">
-                                    <span class="nav-main-link-name">Attendance</span>
-                                </a>
-                            </li>
-
-
-                            <li class="nav-main-item">
-                                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                                    <span class="nav-main-link-name">More Options</span>
-                                </a>
-                                <ul class="nav-main-submenu">
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link" href="javascript:void(0)">
-                                            <span class="nav-main-link-name">Another Link</span>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                        </ul>
                     </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ route('students.all') }}">
+                            <span class="nav-main-link-name">Students</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ route('course.all') }}">
+                            <span class="nav-main-link-name">Courses</span>
+                        </a>
+                    </li>
+
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('exam.all') }}">
+                        <span class="nav-main-link-name">Exams</span>
+                    </a>
+                </li>
+                  @endcan
+
+                    @can('isInvigilator', \App\Models\User::class)
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ route('attendance.all') }}">
+                            <span class="nav-main-link-name">Attendance</span>
+                        </a>
+                    </li>
+                    @endcan
 
                    <form action="{{ route('logout') }}" method="POST">
                        @csrf

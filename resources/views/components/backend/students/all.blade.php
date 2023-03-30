@@ -2,6 +2,7 @@
     <div class="p-5 block block-rounded">
         <div class="block-header block-header-default">
             <h3 class="block-title">STUDENT MANAGEMENT</h3>
+            <a href="{{ route('students.add') }}" class="btn btn-primary">Add Student</a>
             <div class="block-options">
 
             </div>

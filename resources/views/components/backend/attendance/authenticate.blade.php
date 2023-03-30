@@ -11,6 +11,26 @@
                 <div class="block-header block-header-default">
                     <h3 class="block-title">Mark Attendance</h3>
                 </div>
+                @if(session('info'))
+                    <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
+                        <div class="alert alert-secondary alert-dismissible alert-danger" role="alert">
+                            <p class="mb-0">
+                                {{ session()->get('info') }} !
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </nav>
+                @endif
+                @if(session('success'))
+                    <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
+                        <div class="alert alert-secondary alert-dismissible alert-success" role="alert">
+                            <p class="mb-0">
+                                {{ session()->get('success') }} !
+                            </p>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </nav>
+                @endif
                 <div class="block-content block-content-full">
                     <!-- Regular -->
                     <div class="row items-push">
@@ -34,7 +54,7 @@
                                 <label class="form-label" for="val-username">Select attendance <span class="text-danger">*</span></label>
                                 
                                 <select name="attendance" class="form-select" id="">
-                                    <option selected value=></option>
+                                    <option selected value=>select one..</option>
                                     @foreach ($attendances as $attendance )
                                         <option value="{{ $attendance->id }}">{{ $attendance->title }}</option>
                                     @endforeach
@@ -47,7 +67,7 @@
 
 
                             <div class="mb-4">
-                                <input type="submit" class="form-control bg-slate-500" value="Verify Student">
+                                <input type="submit" class="form-control btn btn-primary bg-slate-500" value="Verify Student">
                             </div>
     
                         </div>

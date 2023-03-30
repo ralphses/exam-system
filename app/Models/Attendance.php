@@ -12,7 +12,7 @@ class Attendance extends Model
     protected $fillable = ['title'];
 
     public function students() {
-        return $this->belongsToMany(Student::class, 'student_attendace');
+        return $this->belongsToMany(Student::class, 'student_attendance');
     }
 
     public function examination() {
