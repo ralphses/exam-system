@@ -25,8 +25,6 @@ RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl gd
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Copy supervisor configuration file
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Set permissions for storage and bootstrap/cache directories
 RUN chmod -R 775 storage bootstrap/cache
