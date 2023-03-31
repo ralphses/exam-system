@@ -29,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        chmod("../public/storage", 775);
+        chmod("public/storage", 775);
     }
 }
