@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_ENV') === 'production') {
             URL::forceScheme('https');
             
-            chmod("/app/../public/storage", 775);
+            chmod("/app/public/storage", 775);
 
         }
 
