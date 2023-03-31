@@ -1,36 +1,48 @@
-# Use an official PHP runtime as a parent image
+# Set the base image
 FROM php:8.1-fpm-alpine
 
-# Set the working directory to /app
-WORKDIR /app
+# Install required packages
+RUN apt-get update && \
+    apt-get install -y \
+        libpng-dev \
+        libjpeg-dev \
+        libonig-dev \
+        libxml2-dev \
+        libzip-dev \
+        zip \
+        unzip \
+        git \
+    && docker-php-ext-install \
+        pdo_mysql \
+        mbstring \
+        exif \
+        pcntl \
+        bcmath \
+        gd \
+    && docker-php-ext-enable \
+        opcache \
+        gd
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Set the working directory
+WORKDIR /var/www/html
 
-# Install any needed dependencies
-RUN apk update && apk add --no-cache \
-    zlib-dev \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    freetype-dev \
-    libzip-dev \
-    oniguruma-dev \
-    git \
-    curl \
-    supervisor
+# Copy application files
+COPY . .
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl gd
+# Set permissions for storage directory
+RUN chmod -R 775 storage
 
-# Install composer
+# Install Composer and dependencies
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install --no-interaction --no-progress --prefer-dist
 
+# Set environment variables
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
-# Set permissions for storage and bootstrap/cache directories
-RUN chmod -R 775 storage bootstrap/cache
+# Configure Apache
+RUN a2enmod rewrite
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# Expose port 9000
-EXPOSE 9000
-
-# Start supervisord
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Expose port 80
+EXPOSE 80
