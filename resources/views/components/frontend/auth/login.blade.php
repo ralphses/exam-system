@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="fs-sm text-muted text-center">
-            <strong>OneUI 5.5</strong> &copy; <span data-toggle="year-copy"></span>
+            <strong>Attendance System</strong> &copy; <span data-toggle="year-copy"></span>
         </div>
     </div>
 

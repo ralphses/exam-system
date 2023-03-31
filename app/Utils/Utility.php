@@ -6,6 +6,7 @@ class Utility
 {
 
     public const USER_ROLES = ['admin' => 'LEVEL ADVISER', 'invigilator' => 'INVIGILATOR'];
+    
     public const STUDENT_LEVELS = [
         '100l' => '100 Level',
         '200l' => '200 Level',

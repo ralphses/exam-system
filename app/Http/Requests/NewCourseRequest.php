@@ -30,4 +30,6 @@ class NewCourseRequest extends FormRequest
             'course_unit' => ['required', 'integer']
         ];
     }
+
+    
 }

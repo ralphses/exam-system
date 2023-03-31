@@ -101,7 +101,7 @@ class AttendanceController extends Controller
 
             $students = $attendance->students;
 
-            throw_if($students->count() < 1, new RuntimeException("No Data found"));
+            throw_if($students->count() < 1, new RuntimeException("No Student Data found for this attendance"));
 
             return view('backend.attendance.report', ['students' => $students, 'course' => $attendance->examination]);
         }
@@ -117,37 +117,4 @@ class AttendanceController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Attendance  $attendance
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Attendance $attendance)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Attendance  $attendance
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Attendance $attendance)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Attendance  $attendance
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Attendance $attendance)
-    {
-        //
-    }
 }

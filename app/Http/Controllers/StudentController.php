@@ -53,7 +53,7 @@ class StudentController extends Controller
             'level' => $request->get('level'),
             'matric' => $request->get('matric'),
             'school_id' => $request->get('school'),
-            'image' => $this->storeImage($request)
+            'image' => $request->hasFile("image") ? $request->file("image")->store("public/students/images") : ""
         ]);
 
         session()->put('student', $student->id);
@@ -122,16 +122,5 @@ class StudentController extends Controller
         return redirect(route('students.all'));
     }
 
-    private function storeImage(Request $request): array|string
-    {
-
-        $name = str_replace(' ', '', $request->get('name') . $request->get('matric'));
-        $newImage = uniqid() . '-' . $name . '.' . $request->file('image')->extension();
-
-        $move = $request->file('image')->move(public_path('assets/images/students/photos'), $newImage, true);
-        $move = str_replace("\assets", '/assets', $move);
-
-        return str_replace(str_replace('app\Http\Controllers', '', __DIR__).'public', '', $move);
-
-    }
+  
 }

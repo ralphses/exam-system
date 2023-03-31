@@ -1,3 +1,13 @@
+@if(session('info'))
+<nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
+    <div class="alert alert-secondary alert-dismissible alert-danger" role="alert">
+        <p class="mb-0">
+            {{ session()->get('info') }} !
+        </p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</nav>
+@endif
 <div class="p-5">
     <div class="p-5 block block-rounded">
         <div class="block-header block-header-default">
