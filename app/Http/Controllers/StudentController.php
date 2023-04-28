@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -48,13 +49,25 @@ class StudentController extends Controller
     {
         $request->validated();
 
+        $path = Storage::disk('s3')->put("smartAttend/public/students/images", $request->file('image'));
+        $imageUrl = Storage::url($path);
+
+        // dd($imageUrl);
+        
+
+        // dd(Storage::disk('s3')->get($imageUrl));
+
         $student = Student::create([
             'name' => $request->get('name'),
             'level' => $request->get('level'),
             'matric' => $request->get('matric'),
             'school_id' => $request->get('school'),
-            'image' => $request->hasFile("image") ? $request->file("image")->store("public/students/images") : ""
+            'image' => $request->hasFile("image") ? Storage::disk('s3')->put("smartAttend/public/students/images", $request->file('image')) : ""
         ]);
+
+        // dd($student->image);
+
+        
 
         session()->put('student', $student->id);
         session()->put('school', $request->get('school'));

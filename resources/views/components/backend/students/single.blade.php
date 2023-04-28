@@ -30,7 +30,7 @@
                         <div class="col-md-6 col-xl-3">
                             <a class="block block-rounded block-link-pop text-center" href="javascript:void(0)">
                                 <div class="block-content block-content-full">
-                                    <img class="img-avatar-rounded" style="width: 100%; height: 100%" src="{{ Storage::url($student->image) }}" alt="">
+                                    <img class="img-avatar-rounded" style="width: 100%; height: 100%" src="{{ Storage::disk('s3')->url($student->image) }}" alt="">
                                 </div>
                             </a>
                         </div>

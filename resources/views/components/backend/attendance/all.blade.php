@@ -8,8 +8,8 @@
     </div>
 </nav>
 @endif
-<div class="p-5">
-    <div class="p-5 block block-rounded">
+<div class="p-2">
+    <div class="p-2 block block-rounded">
         <div class="block-header block-header-default">
             <h3 class="block-title">ALL ATTENDANCES</h3>
             <div class="block-options">

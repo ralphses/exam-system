@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             "name" => "Dominic A",
             "role" => "LEVEL ADVISER",
             "email" => "exams@fulafia.edu.ng",
-            "password" => Hash::make("exams@fulafia.edu.ng"),
+            "password" => Hash::make("password"),
             "remember_token" => null,
             "email_verified_at" => date("Y-m-d h:m:s")
         ]);
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             "name" => "Abdullahi Mohammed",
             "role" => "INVIGILATOR",
             "email" => "abdul.exams@fulafia.edu.ng",
-            "password" => Hash::make("abdul.exams@fulafia.edu.ng"),
+            "password" => Hash::make("password"),
             "remember_token" => null,
             "email_verified_at" => date("Y-m-d h:m:s")
         ]);

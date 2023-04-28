@@ -1,5 +1,5 @@
-<div class="p-5">
-    <div class="p-5 block block-rounded">
+<div class="p-2">
+    <div class="p-2 block block-rounded">
         <div class="block-header block-header-default">
             <h3 class="block-title">ALL COURSES</h3>
             <a href="{{ route('course.add') }}">
