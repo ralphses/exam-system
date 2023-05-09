@@ -14,55 +14,58 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-vcenter">
                     <thead>
-                    <tr>
-                        <th style="width: 10%;">#</th>
-                        <th style="width: 15%;"">Code</th>
-                        <th style="width: 55%;">Title</th>
-                        <th style="width: 10%;">unit</th>
-                        <th class="text-center" style="width: 100px;">Actions</th>
-                    </tr>
+                        <tr>
+                            <th style="width: 10%;">#</th>
+                            <th style="width: 15%;"">Code</th>
+                            <th style="width: 55%;">Title</th>
+                            <th style="width: 10%;">unit</th>
+                            <th class="text-center" style="width: 100px;">Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
 
-                    @if($courses->count() > 0)
-                        @foreach($courses as $course)
+                        @if ($courses->count() > 0)
+                            @foreach ($courses as $course)
+                                <tr>
+                                    <td class="fw-semibold fs-sm">
+                                        <a href="">{{ ++$loop->index }}</a>
+                                    </td>
+                                    <td class="fw-semibold fs-sm">
+                                        {{ $course->code }}
+                                    </td>
+                                    <td class="fs-sm">{{ $course->title }}</em></td>
+                                    <td>
+                                        {{ $course->unit }}
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <form action="{{ route('course.delete', ['id' => $course->id]) }}"
+                                                method="POST">
+
+                                                @method('DELETE')
+                                                @csrf
+
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                                    data-bs-toggle="tooltip" aria-label="Delete"
+                                                    data-bs-original-title="Delete">
+                                                    <i class="fa fa-fw fa-times"></i>
+                                                </button>
+                                            </form>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr>
-                                <td class="fw-semibold fs-sm">
-                                    <a href="">{{ ++$loop->index }}</a>
-                                </td>
-                                <td class="fw-semibold fs-sm">
-                                    {{ $course->code }}
-                                </td>
-                                <td class="fs-sm">{{ $course->title }}</em></td>
-                                <td>
-                                    {{ $course->unit }}
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <form action="{{ route('course.delete', ['id' => $course->id]) }}" method="POST">
 
-                                            @method('DELETE')
-                                            @csrf
-
-                                            <button type="submit" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
-                                                <i class="fa fa-fw fa-times"></i>
-                                            </button>
-                                        </form>
-
-                                    </div>
+                                <td class="fw-semibold text-center" colspan="5">
+                                    <h5>NO DATA FOUND</h5>
                                 </td>
+
                             </tr>
-                        @endforeach
-
-                    @else
-                        <tr>
-
-                            <td class="fw-semibold text-center" colspan="5">
-                                <h5>NO DATA FOUND</h5>
-                            </td>
-
-                        </tr>
-                    @endif
+                        @endif
 
                     </tbody>
                 </table>
